@@ -17,6 +17,13 @@ class SrvManager
 
         Utilities.parse_json(response.body)
       end
+
+      def self.delete(scw, ip_id)
+        Typhoeus.delete(
+          File.join(scw.api_url, "/instance/v1/zones/#{scw.zone}/ips/#{ip_id}"),
+          headers: scw.headers
+        )
+      end
     end
   end
 end
