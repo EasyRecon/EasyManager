@@ -15,10 +15,41 @@ class SrvManager
         )
         return unless response&.code == 200
 
-        Utilities.parse_json(response.body)
+        json_body = Utilities.parse_json(response.body)
+        return unless json_body
+
+        json_body['servers']
       end
 
-      def self.create(scw, srv_type, image, name_pattern)
+      def self.srv_up?(scw, srv)
+        status(scw, srv['id']) == 'running' && Utilities.elapsed_times(Time.now.to_s, srv['creation_date']) > 90
+      end
+
+      def self.ready?(scw, srv, ssh, cmds)
+        return unless srv_up?(scw, srv)
+
+        cmd_values = SSH.cmd_exec(ssh, srv, cmds)
+        if cmd_values[cmds[0]].empty?
+          cmd_values['hostname'] == srv['hostname']
+        else
+          cmd_values[cmds[1]].include?('The system is finally up')
+        end
+      end
+
+      def self.status(scw, srv_id)
+        response = Typhoeus.get(
+          File.join(scw.api_url, "/instance/v1/zones/#{scw.zone}/servers/#{srv_id}"),
+          headers: scw.headers
+        )
+        return unless response&.code == 200
+
+        json_body = Utilities.parse_json(response.body)
+        return unless json_body
+
+        json_body['server']['state']
+      end
+
+      def self.create(scw, srv_type, image, name_pattern, cloud_init)
         data = srv_data(scw, srv_type, image, name_pattern)
         return if data.nil?
 
@@ -30,9 +61,30 @@ class SrvManager
         return unless body_json
 
         srv_id = body_json['server']['id']
-        action(scw, srv_id, 'poweron')
+        launch(scw, srv_id, cloud_init)
 
-        body_json
+        body_json['server']
+      end
+
+      def self.delete(scw, srv_id, srv_ip_id)
+        Ips.delete(scw, srv_ip_id)
+        action(scw, srv_id, 'terminate')
+      end
+
+      def self.launch(scw, srv_id, cloud_init)
+        add_cloud_init(scw, srv_id, cloud_init) if cloud_init
+        action(scw, srv_id, 'poweron')
+      end
+
+      def self.add_cloud_init(scw, srv_id, cloud_init)
+        data = Utilities.file_read(cloud_init)
+        return if data.nil?
+
+        Typhoeus.patch(
+          File.join(scw.api_url, "/instance/v1/zones/#{scw.zone}/servers/#{srv_id}/user_data/cloud-init"),
+          headers: { 'X-Auth-Token' => scw.api_token, 'Content-Type' => 'text/plain' },
+          body: data
+        )
       end
 
       def self.action(scw, srv_id, action)
