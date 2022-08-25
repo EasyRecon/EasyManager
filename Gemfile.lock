@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ethon (0.15.0)
+      ffi (>= 1.15.0)
+    ffi (1.15.5)
+    typhoeus (1.4.0)
+      ethon (>= 0.9.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  typhoeus
+
+BUNDLED WITH
+   2.1.4
