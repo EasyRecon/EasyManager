@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = 'easymanager'
-  spec.version       = '0.9'
+  spec.name          = 'easy_manager'
+  spec.version       = '0.9.1'
   spec.authors       = ['Joshua MARTINELLE']
   spec.email         = ['contact@jomar.fr']
   spec.summary       = 'Cloud Server Manager Library'
-  spec.homepage      = ''
+  spec.homepage      = 'https://rubygems.org/gems/easymanager'
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.7.1'
 
@@ -17,5 +17,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency('typhoeus', '~> 1.4', '>= 1.4.0')
   spec.add_dependency('x25519', '1.0.9')
 
-  spec.files = Dir['src/**/*.rb']
+  spec.files = Dir['lib/**/*.rb']
 end

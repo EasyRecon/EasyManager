@@ -19,12 +19,12 @@
 
 In your Gemfile
 ```ruby
-gem 'EasyManager', '~> 0.3'
+gem 'easy_manager', '~> 0.9.1'
 ```
 
 Or
 ```bash
-gem install EasyManager
+gem install easy_manager
 ```
 
 ## Usage example
