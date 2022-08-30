@@ -34,6 +34,12 @@ class SrvManager
       Servers.delete(self, srv['id'], srv['public_ip']['id'])
     end
 
+    def delete_by_id(id)
+      servers = list
+
+      servers.each { |server| delete(server) if server['id'] == id }
+    end
+
     def status(srv)
       Servers.status(self, srv['id'])
     end

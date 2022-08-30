@@ -34,7 +34,7 @@ manager = SrvManager::Scaleway.new(options)
 ssh = SrvManager::SSH.new
 
 # Displays all instances
-servers = manager.list['servers']
+servers = manager.list
 puts servers
 
 # Create a new instance
@@ -74,4 +74,5 @@ SrvManager::SSH.scp(ssh, srv, files)
 
 # Delete the server
 manager.delete(srv)
+manager.delete_by_id('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 ```
