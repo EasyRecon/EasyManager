@@ -17,13 +17,21 @@
 
 ## Installation
 
+In your Gemfile
+```ruby
+gem 'EasyManager', '~> 0.2'
 ```
-# TODO
+
+Or
+```bash
+gem install EasyManager
 ```
 
 ## Usage example
 
 ```ruby
+require 'easy_manager'
+
 options = {
   zone: 'fr-par-1',
   project: 'YOUR-PROJECT-ID',
