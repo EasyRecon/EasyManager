@@ -82,7 +82,7 @@ class EasyManager
 
         Typhoeus.patch(
           File.join(scw.api_url, "/instance/v1/zones/#{scw.zone}/servers/#{srv_id}/user_data/cloud-init"),
-          headers: { 'X-Auth-Token' => scw.api_token, 'Content-Type' => 'text/plain' },
+          headers: { 'X-Auth-Token' => scw.secret_token, 'Content-Type' => 'text/plain' },
           body: data
         )
       end

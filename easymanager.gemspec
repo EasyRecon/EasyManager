@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = 'EasyManager'
-  spec.version       = '0.2'
+  spec.name          = 'easymanager'
+  spec.version       = '0.3'
   spec.authors       = ['Joshua MARTINELLE']
   spec.email         = ['contact@jomar.fr']
   spec.summary       = 'Cloud Server Manager Library'

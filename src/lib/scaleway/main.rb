@@ -7,14 +7,14 @@ require_relative '../ssh'
 class EasyManager
   # Scaleway Class with global methods
   class Scaleway
-    attr_reader :provider, :zone, :project, :api_url, :headers, :api_token
+    attr_reader :provider, :zone, :project, :api_url, :headers, :secret_token
 
     def initialize(options)
-      @api_token = options[:api_token]
+      @secret_token = options[:secret_token]
       @zone = options[:zone]
       @project = options[:project]
       @api_url = 'https://api.scaleway.com/'
-      @headers = { 'X-Auth-Token' => @api_token, 'Content-Type' => 'application/json' }
+      @headers = { 'X-Auth-Token' => @secret_token, 'Content-Type' => 'application/json' }
     end
 
     def list

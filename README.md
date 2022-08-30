@@ -19,7 +19,7 @@
 
 In your Gemfile
 ```ruby
-gem 'EasyManager', '~> 0.2'
+gem 'EasyManager', '~> 0.3'
 ```
 
 Or
@@ -35,7 +35,7 @@ require 'easy_manager'
 options = {
   zone: 'fr-par-1',
   project: 'YOUR-PROJECT-ID',
-  api_token: 'YOUR-API-TOKEN'
+  secret_token: 'YOUR-SECRET-TOKEN'
 }
 
 manager = EasyManager::Scaleway.new(options)
