@@ -3,7 +3,7 @@
 require_relative 'config'
 require_relative 'ips'
 
-class SrvManager
+class EasyManager
   class Scaleway
     # Specific method for server management
     # https://developers.scaleway.com/en/products/instance/api/#servers-8bf7d7

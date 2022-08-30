@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SrvManager
+class EasyManager
   class Scaleway
     # Specific method for ips management
     # https://developers.scaleway.com/en/products/instance/api/#ips-268151

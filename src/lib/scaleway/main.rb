@@ -4,7 +4,7 @@ require 'date'
 require_relative 'servers'
 require_relative '../ssh'
 
-class SrvManager
+class EasyManager
   # Scaleway Class with global methods
   class Scaleway
     attr_reader :provider, :zone, :project, :api_url, :headers, :api_token
@@ -24,7 +24,7 @@ class SrvManager
     def create(options)
       srv_type = options[:srv_type] || 'DEV1-S'
       image = options[:image] || 'ubuntu-jammy'
-      name_pattern = options[:name_pattern] || 'scw-srvmanager-__RANDOM__'
+      name_pattern = options[:name_pattern] || 'scw-easymanager-__RANDOM__'
       cloud_init = options[:cloud_init] || false
 
       Servers.create(self, srv_type, image, name_pattern, cloud_init)

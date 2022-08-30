@@ -3,7 +3,7 @@
 require 'net/ssh'
 require 'net/scp'
 
-class SrvManager
+class EasyManager
   # SSH Class
   class SSH
     attr_reader :username, :ssh_key

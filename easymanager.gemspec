@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = 'SrvManager'
+  spec.name          = 'EasyManager'
   spec.version       = '0.0.1'
   spec.authors       = ['Joshua MARTINELLE']
   spec.email         = ['contact@jomar.fr']
@@ -10,6 +10,6 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.7.1'
 
-  spec.files         = %w[Gemfile src/srv_manager.rb]
+  spec.files         = %w[Gemfile src/easy_manager.rb]
   spec.require_paths = ['src']
 end

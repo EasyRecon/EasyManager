@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SrvManager
+class EasyManager
   class Scaleway
     # Methods to retrieve information specific to Scaleway
     class Config
