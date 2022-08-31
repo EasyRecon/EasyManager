@@ -38,8 +38,10 @@ options = {
   secret_token: 'YOUR-SECRET-TOKEN'
 }
 
-manager = EasyManager::Scaleway.new(options)
+# It is possible to pass the following arguments :
+#  { username: 'root', ssh_key: '/root/.ssh/id_rsa' }
 ssh = EasyManager::SSH.new
+manager = EasyManager::Scaleway.new(options)
 
 # Displays all instances
 servers = manager.list
@@ -52,7 +54,7 @@ srv = manager.create({ cloud_init: "#{__dir__}/cloud-init.yml" })
 
 # Sleep unitil the server is ready, the default timeout value is 300
 timeout = 60 
-ready = wait_until_ready!(timeout)
+ready = manager.wait_until_ready!(srv, ssh, timeout)
 return unless ready
 
 # It is also possible to check independently if the server is ready
