@@ -10,7 +10,7 @@ class EasyManager
 
     def initialize(options = {})
       @username = options[:username] || 'root'
-      @ssh_key = options[:ssh_key] || '~/.ssh/id_rsa'
+      @ssh_key = options[:ssh_key] || '/root/.ssh/id_rsa'
     end
 
     def self.cmd_exec(ssh, srv, cmds)
