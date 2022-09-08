@@ -67,7 +67,7 @@ class EasyManager
       check_cloud_init_cmd = "test -f '/var/log/cloud-init.log' && echo true"
       cloud_init_ready_cmd = 'tail -1 /var/log/cloud-init-output.log'
 
-      [check_cloud_init_cmd, cloud_init_ready_cmd, 'hostname']
+      [check_cloud_init_cmd, cloud_init_ready_cmd]
     end
   end
 end

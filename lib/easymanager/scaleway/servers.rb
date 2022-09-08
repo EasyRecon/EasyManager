@@ -29,11 +29,11 @@ class EasyManager
         return unless srv_up?(scw, srv)
 
         cmd_values = SSH.cmd_exec(ssh, srv, cmds)
-        if cmd_values[cmds[0]].empty?
-          cmd_values['hostname'] == srv['hostname']
-        else
-          cmd_values[cmds[1]].include?('The system is finally up')
-        end
+        return unless cmd_values
+        return if cmd_values[cmds[0]].empty?
+
+        cmd_values[cmds[1]].include?('The system is finally up') ||
+          cmd_values[cmds[1]].match?(/Cloud-init v.*finished\sat.*Up.*seconds/)
       end
 
       def self.status(scw, srv_id)
