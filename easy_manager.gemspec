@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'easy_manager'
-  spec.version       = '0.9.2'
+  spec.version       = '0.9.3'
   spec.authors       = ['Joshua MARTINELLE']
   spec.email         = ['contact@jomar.fr']
   spec.summary       = 'Cloud Server Manager Library'
