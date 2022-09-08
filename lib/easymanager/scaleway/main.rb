@@ -35,9 +35,16 @@ class EasyManager
     end
 
     def delete_by_id(id)
+      response = nil
       servers = list
 
-      servers.each { |server| delete(server) if server['id'] == id }
+      servers.each do |server|
+        next unless server['id'] == id
+
+        response = delete(server)
+      end
+
+      response
     end
 
     def status(srv)
