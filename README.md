@@ -19,7 +19,7 @@
 
 In your Gemfile
 ```ruby
-gem 'easy_manager', '~> 0.9.3'
+gem 'easy_manager', '~> 0.9.4'
 ```
 
 Or
@@ -52,8 +52,8 @@ puts servers
 #  { srv_type: 'DEV1-S', image: 'ubuntu-jammy', name_pattern: 'scw-easymanager-__RANDOM__', cloud_init: false }
 srv = manager.create({ cloud_init: "#{__dir__}/cloud-init.yml" })
 
-# Sleep unitil the server is ready, the default timeout value is 360
-timeout = 60 
+# Sleep unitil the server is ready, the default timeout value is 600
+timeout = 60
 ready = manager.wait_until_ready!(srv, ssh, timeout)
 return unless ready
 
