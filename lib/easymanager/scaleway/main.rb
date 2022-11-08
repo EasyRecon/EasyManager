@@ -55,7 +55,7 @@ class EasyManager
       Servers.ready?(self, srv, ssh, srv_ready_cmds)
     end
 
-    def wait_until_ready!(srv, ssh, timeout = 360)
+    def wait_until_ready!(srv, ssh, timeout = 600)
       ready = false
       start = Time.now
       loop do
