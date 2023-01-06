@@ -25,9 +25,10 @@ class EasyManager
       srv_type = options[:srv_type] || 'DEV1-S'
       image = options[:image] || 'ubuntu-jammy'
       name_pattern = options[:name_pattern] || 'scw-easymanager-__RANDOM__'
+      tags = options[:tags] || []
       cloud_init = options[:cloud_init] || false
 
-      Servers.create(self, srv_type, image, name_pattern, cloud_init)
+      Servers.create(self, srv_type, image, name_pattern, tags, cloud_init)
     end
 
     def delete(srv)

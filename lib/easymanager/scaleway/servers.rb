@@ -49,8 +49,8 @@ class EasyManager
         json_body['server']['state']
       end
 
-      def self.create(scw, srv_type, image, name_pattern, cloud_init)
-        data = srv_data(scw, srv_type, image, name_pattern)
+      def self.create(scw, srv_type, image, name_pattern, tags, cloud_init)
+        data = srv_data(scw, srv_type, image, name_pattern, tags)
         return if data.nil?
 
         response = Typhoeus.post(File.join(scw.api_url, "/instance/v1/zones/#{scw.zone}/servers/"),
@@ -101,17 +101,20 @@ class EasyManager
         action(scw, srv_id, action, tries) unless tries >= 3
       end
 
-      def self.srv_data(scw, srv_type, image, name_pattern)
+      def self.srv_data(scw, srv_type, image, name_pattern, tags)
         srv_infos = Config.srv_infos(srv_type)
         image_id = Config.image_id(image)
         new_ip = Ips.reserve(scw)
         return if image_id.nil? || srv_infos.nil? || new_ip.nil?
 
         {
-          name: name_pattern.gsub('__RANDOM__', Utilities.random_string), commercial_type: srv_type,
-          public_ip: new_ip['ip']['id'], project: scw.project,
+          name: name_pattern.gsub('__RANDOM__', Utilities.random_string),
+          commercial_type: srv_type,
+          public_ip: new_ip['ip']['id'],
+          project: scw.project,
           image: image_id,
-          volumes: { '0' => { size: srv_infos[:volume], volume_type: srv_infos[:volume_type] } }
+          volumes: { '0' => { size: srv_infos[:volume], volume_type: srv_infos[:volume_type] } },
+          tags: tags
         }
       end
     end

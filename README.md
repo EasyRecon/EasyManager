@@ -19,7 +19,7 @@
 
 In your Gemfile
 ```ruby
-gem 'easy_manager', '~> 0.9.4'
+gem 'easy_manager', '~> 0.9.5'
 ```
 
 Or
@@ -49,7 +49,7 @@ puts servers
 
 # Create a new instance
 # It is possible to pass the following arguments :
-#  { srv_type: 'DEV1-S', image: 'ubuntu-jammy', name_pattern: 'scw-easymanager-__RANDOM__', cloud_init: false }
+#  { srv_type: 'DEV1-S', image: 'ubuntu-jammy', name_pattern: 'scw-easymanager-__RANDOM__', tags: ['string'], cloud_init: false }
 srv = manager.create({ cloud_init: "#{__dir__}/cloud-init.yml" })
 
 # Sleep unitil the server is ready, the default timeout value is 600
