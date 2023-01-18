@@ -87,18 +87,13 @@ class EasyManager
         )
       end
 
-      def self.action(scw, srv_id, action, tries = 0)
+      def self.action(scw, srv_id, action)
         data = { action: action }
-        resp = Typhoeus.post(
+        Typhoeus.post(
           File.join(scw.api_url, "/instance/v1/zones/#{scw.zone}/servers/#{srv_id}/action"),
           headers: scw.headers,
           body: data.to_json
         )
-        return resp if resp&.code == 202
-
-        sleep(rand(10..60))
-        tries += 1
-        action(scw, srv_id, action, tries) unless tries >= 3
       end
 
       def self.srv_data(scw, srv_type, image, name_pattern, tags)

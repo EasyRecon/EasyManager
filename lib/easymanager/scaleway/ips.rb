@@ -18,16 +18,11 @@ class EasyManager
         Utilities.parse_json(response.body)
       end
 
-      def self.delete(scw, ip_id, tries = 0)
-        resp = Typhoeus.delete(
+      def self.delete(scw, ip_id)
+        Typhoeus.delete(
           File.join(scw.api_url, "/instance/v1/zones/#{scw.zone}/ips/#{ip_id}"),
           headers: scw.headers
         )
-        return resp if resp&.code == 204
-
-        sleep(rand(10..60))
-        tries += 1
-        delete(scw, ip_id, tries) unless tries >= 3
       end
     end
   end
