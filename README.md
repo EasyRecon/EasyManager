@@ -19,7 +19,7 @@
 
 In your Gemfile
 ```ruby
-gem 'easy_manager', '~> 0.9.5'
+gem 'easy_manager', '~> 0.9.7'
 ```
 
 Or

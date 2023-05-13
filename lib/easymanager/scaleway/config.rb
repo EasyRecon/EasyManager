@@ -6,10 +6,10 @@ class EasyManager
     class Config
       def self.srv_infos(srv_type)
         srv_infos = {
-          'DEV1-S' => { volume: 20_000_000_000, volume_type: 'l_ssd' },
-          'DEV1-M' => { volume: 40_000_000_000, volume_type: 'l_ssd' },
-          'DEV1-L' => { volume: 80_000_000_000, volume_type: 'l_ssd' },
-          'DEV1-XL' => { volume: 120_000_000_000, volume_type: 'l_ssd' }
+          'DEV1-S' => { volume: 20_000_000_000, volume_type: 'b_ssd' },
+          'DEV1-M' => { volume: 40_000_000_000, volume_type: 'b_ssd' },
+          'DEV1-L' => { volume: 80_000_000_000, volume_type: 'b_ssd' },
+          'DEV1-XL' => { volume: 120_000_000_000, volume_type: 'b_ssd' }
         }
         srv_infos[srv_type]
       end

@@ -6,7 +6,7 @@ GEM
     ethon (0.15.0)
       ffi (>= 1.15.0)
     ffi (1.15.5)
-    net-scp (4.0.0.rc1)
+    net-scp (4.0.0)
       net-ssh (>= 2.6.5, < 8.0.0)
     net-ssh (7.0.1)
     typhoeus (1.4.0)
@@ -18,8 +18,8 @@ PLATFORMS
 DEPENDENCIES
   bcrypt_pbkdf
   ed25519
-  net-scp (~> 4.0.0.rc1)
-  net-ssh (~> 7.0.0beta1)
+  net-scp (~> 4.0.0)
+  net-ssh (~> 7.0.0)
   typhoeus
 
 BUNDLED WITH
