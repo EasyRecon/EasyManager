@@ -8,6 +8,7 @@
 **Scaleway available images:**
 * debian-buster
 * ubuntu-jammy
+* docker
 
 **Scaleway available instances:**
 * DEV1-S
@@ -19,7 +20,7 @@
 
 In your Gemfile
 ```ruby
-gem 'easy_manager', '~> 0.9.7'
+gem 'easy_manager', '~> 0.10.0'
 ```
 
 Or

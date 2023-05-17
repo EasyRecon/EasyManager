@@ -17,7 +17,8 @@ class EasyManager
       def self.image_id(image)
         image_id = {
           'ubuntu-jammy' => '2289fad9-2694-48ab-bb41-f19e4a9a8584',
-          'debian-buster' => '6d124a42-de28-493f-933b-85a0df5552eb'
+          'debian-buster' => '6d124a42-de28-493f-933b-85a0df5552eb',
+          'docker' => '5c789fa0-3618-46b6-a484-6915a074cd1b'
         }
         image_id[image]
       end
